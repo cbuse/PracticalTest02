@@ -52,7 +52,9 @@ public class CommunicationThread extends Thread {
                     String city = bufferedReader.readLine();
                     String infoType = bufferedReader.readLine();
 
+
                     HashMap<String, Information> data = serverThread.getData();
+
                     Information info = null;
 
                     // incerc sa iau info din cache
@@ -63,9 +65,10 @@ public class CommunicationThread extends Thread {
                             // iau valoarea coresp cheii city
                             info = data.get(city);
                         }
-                    }
+
                     // iau info de pe server web
                     else {
+
                         Log.i(Constants.TAG, "[COMMUNICATION THREAD] Getting the information from the webservice...");
                         HttpClient httpClient = new DefaultHttpClient();
                         // URL DE UNDE IAU DATE
@@ -131,7 +134,8 @@ public class CommunicationThread extends Thread {
                         printWriter.flush();
 
                     }
-                    }
+
+                    }}
                 }
 
             } catch (Exception ioException) {

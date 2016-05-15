@@ -1,6 +1,8 @@
 package practicaltest02.eim.systems.cs.pub.ro.practicaltest02;
 
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,6 +56,7 @@ public class ClientThread extends Thread {
                        @Override
                        public void run() {
                            infoTextView.append(finalizedInfo + "\n");
+                           Log.d("aici", finalizedInfo);
                        }
                    });
                }

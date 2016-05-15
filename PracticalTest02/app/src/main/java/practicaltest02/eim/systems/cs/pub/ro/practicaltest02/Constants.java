@@ -10,6 +10,7 @@ public class Constants {
 
     final public static String   WEB_SERVICE_ADDRESS         = "http://www.wunderground.com/cgi-bin/findweather/getForecast";
 
+
     final public static String   TEMPERATURE                 = "temperature";
     final public static String   WIND_SPEED                  = "wind_speed";
     final public static String   CONDITION                   = "condition";
