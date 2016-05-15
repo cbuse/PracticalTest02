@@ -4,6 +4,8 @@ import android.provider.DocumentsContract;
 import android.util.Log;
 import android.widget.ListView;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -13,6 +15,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -79,10 +82,23 @@ public class CommunicationThread extends Thread {
                         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(params, HTTP.UTF_8);
                         httpPost.setEntity(urlEncodedFormEntity);
 
+
+
                         //TODO ResponseHandler
-                        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                        String pageSourceCode = httpClient.execute(httpPost, responseHandler);
+                        //ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                        //String pageSourceCode = httpClient.execute(httpPost, responseHandler);
+                        HttpResponse httpResponse = httpClient.execute(httpPost);
+                        HttpEntity httpEntity = httpResponse.getEntity();
+                        String pageSourceCode = null;
+                        if (httpEntity == null) {
+                            Log.d(Constants.TAG, "entity is null");
+                        } else {
+                            pageSourceCode = EntityUtils.toString(httpEntity);
+                            Log.d(Constants.TAG, "page: " + pageSourceCode);
+                        }
+
                         org.jsoup.nodes.Document document = Jsoup.parse(pageSourceCode);
+
                         Log.d("vedem pagina html", document.toString());
                         Element element = document.child(0);
                         Elements scripts = element.getElementsByTag(Constants.SCRIPT_TAG);
