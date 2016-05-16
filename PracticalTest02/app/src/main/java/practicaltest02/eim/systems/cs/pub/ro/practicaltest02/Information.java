@@ -4,80 +4,58 @@ package practicaltest02.eim.systems.cs.pub.ro.practicaltest02;
  * Created by cristina on 14.05.2016.
  */
 public class Information {
-    private String temperature;
-    private String windSpeed;
-    private String condition;
-    private String pressure;
-    private String humidity;
+    private String operation;
+    private int op1;
+    private int op2;
 
     public  Information() {
-        this.temperature = null;
-        this.windSpeed   = null;
-        this.condition   = null;
-        this.pressure    = null;
-        this.humidity    = null;
+        this.operation = null;
+        this.op1 = 0;
+        this.op2 = 0;
     }
 
     public  Information(
-            String temperature,
-            String windSpeed,
-            String condition,
-            String pressure,
-            String humidity) {
-        this.temperature = temperature;
-        this.windSpeed   = windSpeed;
-        this.condition   = condition;
-        this.pressure    = pressure;
-        this.humidity    = humidity;
+            String operation,
+            int op1,
+            int op2
+            ){
+        this.operation = operation;
+        this.op1 = op1;
+        this.op2 = op2;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setOperation(String operation) {
+        this.operation = operation;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public String getOperation() {
+        return operation;
     }
 
-    public void setWindSpeed(String windSpeed) {
-        this.windSpeed = windSpeed;
+    public void setOp1(int op1) {
+        this.op1 = op1;
     }
 
-    public String getWindSpeed() {
-        return windSpeed;
+    public int getOp1() {
+       return op1;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setOp2(int op2) {
+        this.op2 = op2;
     }
 
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setPressure(String pressure) {
-        this.pressure = pressure;
-    }
-
-    public String getPressure() {
-        return pressure;
-    }
-
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
-    }
-
-    public String getHumidity() {
-        return humidity;
+    public int getOp2() {
+        return op2;
     }
 
     @Override
     public String toString() {
-        return Constants.TEMPERATURE + ": " + temperature + "\n\r" +
+       /* return Constants.TEMPERATURE + ": " + temperature + "\n\r" +
                 Constants.WIND_SPEED + ": " + windSpeed + "\n\r" +
                 Constants.CONDITION + ": "+ condition + "\n\r" +
                 Constants.PRESSURE + ": "+ pressure + "\n\r" +
-                Constants.HUMIDITY + ": " + humidity;
+                Constants.HUMIDITY + ": " + humidity;*/
+        return operation+","+op1+","+op2;
     }
 
 }

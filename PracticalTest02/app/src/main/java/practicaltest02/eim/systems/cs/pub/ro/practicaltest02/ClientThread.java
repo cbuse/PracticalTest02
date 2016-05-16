@@ -16,13 +16,14 @@ import java.net.UnknownHostException;
 public class ClientThread extends Thread {
     private String address;
     private int port;
-    private String city;
-    private String infoType;
+    private String operation;
+    int op1;
+    int op2;
     private TextView infoTextView;
 
     private Socket socket;
 
-    public ClientThread(String address,
+   /* public ClientThread(String address,
                         int port,
                         String city,
                         String infoType,
@@ -33,7 +34,22 @@ public class ClientThread extends Thread {
         this.infoType = infoType;
         this.infoTextView = infoTextView;
 
-    }
+    }*/
+   public ClientThread(String address,
+                       int port,
+                       String operation,
+                       int op1,
+                       int op2,
+                       TextView infoTextView
+                       ) {
+       this.address = "127.0.0.1";
+       this.port = port;
+       this.op1 = op1;
+       this.op2 = op2;
+       this.operation = operation;
+
+       this.infoTextView = infoTextView;
+   }
 
     @Override
     public void run() {
@@ -43,10 +59,12 @@ public class ClientThread extends Thread {
            PrintWriter printWriter = Utilities.getWriter(socket);
 
            if (bufferedReader != null && printWriter != null) {
-               printWriter.println(city);
+               printWriter.println(operation+","+op1+","+op2);
                printWriter.flush();
-               printWriter.println(infoType);
+               /*printWriter.println(op2);
                printWriter.flush();
+               printWriter.println(operation);
+               printWriter.flush();*/
 
                String info = null;
 
